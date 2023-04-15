@@ -1,9 +1,0 @@
-#DEV_DATABASE_URL=postgres://postgres:ally0788!@127.0.0.1:5432/ecdeve_db
-
-docker-compose up(compose up the container)
-docker ps
-docker exec -it <CONTAINER_NAME_OR_ID> psql -U <USERNAME> -d <DATABASE_NAME>
-docker exec -it 23a32925cf57 sh (run and interact with container)
-docker build -t commerce-backend:0.0.1 .(build image command)
-docker stop $(docker ps -a -q) (stop all container )
-docker rm $(docker ps -a -q)   (delete all container )
