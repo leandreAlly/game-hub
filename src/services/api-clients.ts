@@ -5,6 +5,12 @@ export interface FetchResponse<T> {
   results: T[];
 }
 
+export interface FetchResponses<T> {
+  count: number;
+  next: string | null;
+  results: T[];
+}
+
 const axiosInstance = axios.create({
   baseURL: "https://api.rawg.io/api",
   params: {
@@ -19,13 +25,15 @@ class APIClient<T> {
     this.endpoints = endpoints;
   }
 
-  getAll = async (config: AxiosRequestConfig) => {
-    const res = await axiosInstance.get<FetchResponse<T>>(
-      this.endpoints,
-      config
-    );
-
-    return res.data;
+  getAllGames = (config: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<FetchResponses<T>>(this.endpoints, config)
+      .then((res) => res.data);
+  };
+  getAll = () => {
+    return axiosInstance
+      .get<FetchResponse<T>>(this.endpoints)
+      .then((res) => res.data);
   };
 }
 
