@@ -2,11 +2,6 @@ import axios, { AxiosRequestConfig } from "axios";
 
 export interface FetchResponse<T> {
   count: number;
-  results: T[];
-}
-
-export interface FetchResponses<T> {
-  count: number;
   next: string | null;
   results: T[];
 }
@@ -25,14 +20,9 @@ class APIClient<T> {
     this.endpoints = endpoints;
   }
 
-  getAllGames = (config: AxiosRequestConfig) => {
+  getAll = (config: AxiosRequestConfig) => {
     return axiosInstance
-      .get<FetchResponses<T>>(this.endpoints, config)
-      .then((res) => res.data);
-  };
-  getAll = () => {
-    return axiosInstance
-      .get<FetchResponse<T>>(this.endpoints)
+      .get<FetchResponse<T>>(this.endpoints, config)
       .then((res) => res.data);
   };
 }
