@@ -1,2 +1,2 @@
 # game-hub
-build game hub with reat-typescript and chakra UI
+build game hub with reat-typescript and chakra UI + infinite scroll
