@@ -15,7 +15,7 @@ const GameDetailPage = () => {
   return (
     <>
       <Heading>{game.name}</Heading>
-      <ExpandableText>{game.description_raw}</ExpandableText>
+      <ExpandableText limit={300}>{game.description_raw}</ExpandableText>
     </>
   );
 };
